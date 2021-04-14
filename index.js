@@ -1,6 +1,6 @@
 const express = require('express');
 
-const  getTaylorSinCalc = () => {
+const  agetTaylorSinCalc = () => {
 
     const a = 0
 
@@ -45,7 +45,7 @@ const app = express();
 
 app.get('/', (req, res, next) => {
     const {num} = req.query
-    res.send(`Ansewer is ${getTaylorSinCalc()}`)
+    res.send(`Ansewer is ${agetTaylorSinCalc()}`)
 });
 
 app.listen(3000, ()=> {
