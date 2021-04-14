@@ -22,6 +22,7 @@ const  getTaylorSinCalc = () => {
         var f = Math.cos;
         var expansion = [];
 
+
         for (var i = 0; i < _degree; i++) {
             expansion.push(f(a) / factorialize(i));
             f = derivative(f);
