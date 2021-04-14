@@ -1,6 +1,6 @@
 const express = require('express');
 
-const  getTaylorSinCalc = () => {
+const  getTaylorSinCalc = (selectedDegree = 4) => {
 
     const a = 0
 
@@ -35,7 +35,7 @@ const  getTaylorSinCalc = () => {
 
 
 
-    const calc = (x) =>  `cos(x) = ${maclaurinExpansion(4)(x)}`;
+    const calc = (x) =>  `cos(x) = ${maclaurinExpansion(selectedDegree)(x)}`;
 
     return calc(1)
 }
@@ -45,7 +45,7 @@ const app = express();
 
 app.get('/', (req, res, next) => {
     const {num} = req.query
-    res.send(`Ansewer is ${getTaylorSinCalc()}`)
+    res.send(`Ansewer is ${getTaylorSinCalc(parseInt(num))}`)
 });
 
 app.listen(3000, ()=> {
