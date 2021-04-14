@@ -1,15 +1,14 @@
-const express = require('express');
-
-const  agetTaylorSinCalc = () => {
+const  agetTaylorCosCalc = (selectedDegree = 4) => {
 
     const a = 0
 
     const derivative = fxn => {
         var h = 0.001;
-        return function(x) {
+        return function (x) {
             return (fxn(x + h) - fxn(x - h)) / (2 * h);
         };
     };
+
     function factorialize(num) {
         if (num < 0) return -1;
         else if (num == 0) return 1;
@@ -32,25 +31,14 @@ const  agetTaylorSinCalc = () => {
     }
 
 
-
-
-
-    const calc = (x) =>  `cos(x) = ${maclaurinExpansion(4)(x)}`;
+    const calc = (x) => `cos(x) = ${maclaurinExpansion(selectedDegree)(x)}`;
 
     return calc(1)
 }
 
-const app = express();
-
-
-app.get('/', (req, res, next) => {
-    const {num} = req.query
-    res.send(`Ansewer is ${agetTaylorSinCalc()}`)
-});
-
-app.listen(3000, ()=> {
-    console.log('app started');
-})
+module.exports = {
+    getTaylorCosCalc
+}
 
 
 
